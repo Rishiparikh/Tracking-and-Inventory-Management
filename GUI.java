@@ -9,9 +9,9 @@ public class GUI{
 	private DrawingTool pencil;
 	private SketchPad canvas;
 
-	public SquareAndCircle() {
-		canvas = new SketchPad(600, 600);
-		pencil = new DrawingTool(canvas);
+	public GUI(SketchPad map, DrawingTool pen) {
+		canvas = map;
+		pencil = pen;
 	}
 
 	public void draw() {
