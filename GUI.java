@@ -49,6 +49,6 @@ public class GUI{
 		else if(a.yellowAlert){
 			pencil.setCOlor(YELLOW);
 		}
-		pencil.fillCircle(50);
+		pencil.fillCircle(a.maxCapacity/2);
 	}
 }
