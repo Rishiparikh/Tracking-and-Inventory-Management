@@ -20,9 +20,9 @@ public class Storage implements Shippable{
     maxCapacity = max;
   }
   public void transportItem(Item a, int numItems, Storage destination){
-    int itemNumber = search(myInv, a);
+    int itemNumber = bsearch(myInv, a);
     myInv.get(itemNumber).setNumItems(myInv.get(itemNumber).getNumItems() - numItems);
-    int recieveItemNumber = search(destination.myInv, a);
+    int recieveItemNumber = bsearch(destination.myInv, a);
     destination.myInv.get(itemNumber).setNumItems(destination.myInv.get(itemNumber).getNumItems() + numItems);
   }
   public int checkRedAlert(){
@@ -59,4 +59,32 @@ public class Storage implements Shippable{
     a[1] = y;
     return a; 
   }
+  
+  private int bsearch(Item idToSearch, int first, int last){ 
+  	if (first < last) {
+  		int mid = (first + last)/2;
+  		//if (mid == (myStore.size()-2)) {
+  		//	mid++;
+  		//}
+          int comparedId = idToSearch.compareTo(myInv.get(mid));
+
+          if (comparedId < 0) {
+              return bsearch(idToSearch, first, mid);
+               
+          } 
+          else if (comparedId > 0) {
+          	if ((mid+1) == last) {
+          		comparedId = idToSearch.compareTo(myInv.get(mid+1));
+          		if (comparedId == 0) {
+          			return mid+1;
+          		}
+              }
+              return bsearch(idToSearch, mid+1, last);
+               
+          } else {
+              return mid;   
+          }
+      }
+  	return -1;
+  } 
 }
