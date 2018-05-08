@@ -10,9 +10,9 @@ public class Item{
   public int compareTo(Item a){
     return name.compareTo(a.name);
   }
-  public int getNumItems(){
+  /*public int getNumItems(){
     return quantity;
-  }
+  }*/
   public int getQuantityNeeded(){
     return quantity - goodAmt;
   }
