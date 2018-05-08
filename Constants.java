@@ -8,6 +8,4 @@ public class Constants{
   int[] wareHouseLocation = {0,0};
   int redAlert = 25;
   int yellowAlert = 33;
-  int redAlertLarge = 50;
-  int yellowAlertLarge = 100;
 }
