@@ -42,12 +42,12 @@ public class GUI{
 		pencil.up();
 		pencil.move(a.getLocation[0], a.getLocation[2]);
 		pencil.down();
-		pencil.setCOlor(GREEN);
+		pencil.setColor(GREEN);
 		if(a.redAlert){
 			pencil.setColor(RED);
 		}
 		else if(a.yellowAlert){
-			pencil.setCOlor(YELLOW);
+			pencil.setColor(YELLOW);
 		}
 		pencil.fillCircle(a.maxCapacity/2);
 	}
