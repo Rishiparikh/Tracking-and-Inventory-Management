@@ -1,25 +1,42 @@
-public class Item{
-  public String name;
-  public int quantity;
-  public int goodAmt;
-  public Item(String name1, int quant, int goodAmt){
+public class Item {
+  private String name;
+  private int quantity;
+  
+  public Item(String name1, int quant){
     name = name1;
     quantity = quant;
-    this.goodAmt = goodAmt;
   }
   public int compareTo(Item a){
     return name.compareTo(a.name);
   }
-  public int getNumItems(){
+  public int getQuantity(){
     return quantity;
   }
-  public int getQuantityNeeded(){
-    return quantity - goodAmt;
-  }
-  public void setNumItems(int a) {
+  public void setQuantity(int a) {
+	  
+	  if(a > -1)
 	  quantity = a;
   }
+  
+  public void updateQuantity(int a) {
+	  
+		 
+	  quantity = quantity-a;
+  } 
+  public void refill(int a) {
+	  
+	 if(a > 0)
+	  quantity = quantity+a;
+  }
+ 
+ 
+ public boolean checkAvailability(int amount){
+	    if ( amount > quantity)
+	    	return false;
+	    	else
+	    	 return true;
+	  }
   public String getName() {
-	  return name; 
+	  return name;
   }
 }
