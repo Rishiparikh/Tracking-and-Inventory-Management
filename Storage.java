@@ -61,6 +61,24 @@ public class Storage implements Shippable{
 		  }
 	  }		  
  }
+  
+  public boolean hasItemQuantity(String name, int amount)
+  {
+	  for (int i = 0; i < myInv.size(); i++) 
+	  {
+		  String itemName = myInv.get(i).getName();
+		  if(itemName.equals(name))
+		  {
+			  int availableQuantity =  myInv.get(i).getQuantity();
+			  if(availableQuantity>=amount)
+			  {
+				return true;  
+			  }
+		  }
+	  }
+	  return false;
+  }
+  
   public boolean shipItem(String name, int amount)
   {
 	  for (int i = 0; i < myInv.size(); i++) 
