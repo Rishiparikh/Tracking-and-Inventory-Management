@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Run {
+public class Test {
 	public static void main(String args[]) throws InterruptedException {
 
 		ArrayList<Item> a = new ArrayList<Item>();
