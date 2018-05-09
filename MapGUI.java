@@ -145,6 +145,7 @@ public class MapGUI extends JFrame {
 	private JLabel[] display;
 	private JPanel panel1;
 	private JLabel img;
+	private JButton buttonimg;
 	public MapGUI(WareHouse a) throws InterruptedException {
 		gui(a);
 	}
@@ -219,9 +220,12 @@ public class MapGUI extends JFrame {
 			buttons[i - 1].setVisible(true);
 //			panel.add(buttons[i - 1]);
 			frame.add(buttons[i - 1]);
-			 img = new JLabel(new ImageIcon("images/transport.png"));
+			img = new JLabel(new ImageIcon("images/transport.png"));
 			panel.add(img);
 			frame.add(img);
+			buttonimg = new JButton("Ship");
+			frame.add(buttonimg);
+
 		}
 	}
 
@@ -261,14 +265,21 @@ public class MapGUI extends JFrame {
 	}
 	public void transport(WareHouse a, Item b, int c, Storage d) throws InterruptedException {
 		a.transportItem(b, c, d);
-
+		buttonimg.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "Shipping " + c + " " + b.name);
+			}
+		});
+		buttonimg.setVisible(true);
 		for(int i = 5; i < 17; i++) {
 		img.setBounds(a.x + i * getDirectionX(a,d), a.y + i * getDirectionY(a,d), 92, 55);
+		buttonimg.setBounds(a.x + i * getDirectionX(a,d), a.y -20 + i * getDirectionY(a,d), 100, 20);
 		img.setVisible(true);
 		TimeUnit.SECONDS.sleep(1);
-
+		
 		}
 		img.setVisible(false);
+		buttonimg.setVisible(false);
 		
 	}
 	public int getDirectionX(Storage a, Storage b) {
