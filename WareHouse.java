@@ -2,10 +2,10 @@ import java.util.ArrayList;
 
 public class WareHouse extends Storage implements Shippable{
 	  private ArrayList<Storage> hubs = new ArrayList<Storage>();
-      private int size = Constants.largeStorageMax;
+    
   
-  public WareHouse(ArrayList<Storage> ports, ArrayList<Item> wareHouseItems, int xCord, int yCord, int red, int yellow, int max){
-    super(wareHouseItems, xCord, yCord, red, yellow, max);
+  public WareHouse(ArrayList<Storage> ports, ArrayList<Item> wareHouseItems, int xCord, int yCord, int red, int yellow){
+    super(wareHouseItems, xCord, yCord, red, yellow, Constants.largeStorageMax);
     //ArrayList <Storage> mainInventory = new ArrayList<Storage>();
     hubs = ports; 
   }
@@ -21,8 +21,22 @@ public class WareHouse extends Storage implements Shippable{
   
   public void refillHub(int i)
   {
-	  //////////////////////// this method is incomplete it will check which items needs to refilled in hubs and refil them
-	  hubs.get(i)......
+	  int flag=hubs.get(i).checkRedAlert();
+	  String itemName;
+	  if(flag>=0)
+	  {
+		  itemName= hubs.get(i).getItemName(flag);
+		 hubs.get(i).refilItem(itemName, Constants.refillQuantity);
+		 super.shipItem(itemName, Constants.refillQuantity);
+	  }
+	  
+	  flag=hubs.get(i).checkYellowAlert();
+	  if(flag>=0)
+	  {
+		  itemName= hubs.get(i).getItemName(flag);
+		 hubs.get(i).refilItem(itemName, Constants.refillQuantity);
+		 super.shipItem(itemName, Constants.refillQuantity);
+	  }
   }
   // returns : 0 for normal status, 1 : for yellow flag and 2 : for red flag
   public int hasUpdate(int i)
@@ -43,7 +57,7 @@ public class WareHouse extends Storage implements Shippable{
 	  
 	  int [] wareLoc=super.getLocation();
 	  int wareHouse_distance = (wareLoc[0]-xCord)* (wareLoc[0]-xCord) + (wareLoc[1]-yCord)* (wareLoc[1]-yCord);
-	  if(super.hasItemQuantity())
+	  if(super.hasItemQuantity(name,amount))
 	  {
 		  nearest=-2;
 		  distance=wareHouse_distance;
@@ -62,8 +76,10 @@ public class WareHouse extends Storage implements Shippable{
 			  else
 			  {
 				  if(distance > temp_distance)
+				  {
 					  distance=temp_distance;
 				      nearest=i;
+				  }
 			  }
 		  }
 		 
@@ -74,12 +90,17 @@ public class WareHouse extends Storage implements Shippable{
 	  else if (nearest==-2)
 	  {
 		  super.shipItem(name,amount);
+		  System.out.println("shiping Item from : "+ "WareHouse");
+
 		  return true;
 	  }
 	  else
 	  {
 		  hubs.get(nearest).shipItem(name,amount);
+		  
+		  System.out.println("shiping Item from : "+ nearest);
+		  
 		  return true;
 	  }
-  
+  }
 }
