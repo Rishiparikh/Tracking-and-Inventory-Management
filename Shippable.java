@@ -1,5 +1,8 @@
 import java.util.ArrayList;
-
+ /**
+   * Shippable Interface
+   * Contains outilne for Warehouse class
+   */
 public interface Shippable{
   public int[] getLocation();
   //public ArrayList<Item> getInv;
