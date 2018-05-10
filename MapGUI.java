@@ -244,6 +244,7 @@ public class MapGUI extends JFrame {
 	}
 
 	public void update(WareHouse a) {
+		details[0].setText(a.statement());;
 		details[0].setVisible(true);
 		details[0].setBounds(10, 475, 400, 20);
 		for (int i = 1; i < a.hubs.size() + 1; i++) {
@@ -285,14 +286,13 @@ public class MapGUI extends JFrame {
 	}
 
 	public void transport(WareHouse a, Item b, int c, Storage d) throws InterruptedException {
-		a.transportItem(b, c, d);
 		buttonimg.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(null, "Shipping " + c + " " + b.name);
 			}
 		});
 		buttonimg.setVisible(true);
-		for (int i = 5; i < 17; i++) {
+		for (int i = 3; i < 17; i+=2) {
 			img.setBounds(a.x + i * getDirectionX(a, d), a.y + i * getDirectionY(a, d), 92, 55);
 			buttonimg.setBounds(a.x + i * getDirectionX(a, d), a.y - 20 + i * getDirectionY(a, d), 100, 20);
 			img.setVisible(true);
@@ -301,7 +301,7 @@ public class MapGUI extends JFrame {
 		}
 		img.setVisible(false);
 		buttonimg.setVisible(false);
-
+		a.transportItem(b, c, d);
 	}
 
 	public int getDirectionX(Storage a, Storage b) {
