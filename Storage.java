@@ -7,7 +7,6 @@ public class Storage implements Shippable{
   private int maxCapacity;
   private boolean redAlert;
   private boolean yellowAlert;
-  private boolean isLarge;
   private int x,y;
   private int redLine;
   private int yellowLine;
@@ -32,6 +31,10 @@ public class Storage implements Shippable{
     maxCapacity = max;
   }
   
+  public String getItemName(int i)
+  {
+	  return myInv.get(i).getName();
+  }
   public void refilItem(String name, int amount)
   {
 	  
@@ -79,6 +82,8 @@ public class Storage implements Shippable{
 	  return false;
   }
   
+  //remove this for-loop and string comparison if statement once sort and search algorithms
+  //are used.
   public boolean shipItem(String name, int amount)
   {
 	  for (int i = 0; i < myInv.size(); i++) 
@@ -107,10 +112,10 @@ public class Storage implements Shippable{
 					 else
 						 yellowAlert=false;
 				}
-				 
+			  return true;		   
 			  }
-			  
-		  return true;		  
+			  else
+				  return false;
 		  }
 		
 	}
@@ -166,86 +171,4 @@ public class Storage implements Shippable{
     a[1] = y;
     return a; 
   }
-  
-  /**
-	 * Takes in entire vector, but will merge the following sections together:
-	 * Left sublist from a[first]..a[mid], right sublist from a[mid+1]..a[last].
-	 * Precondition: each sublist is already in ascending order
-	 *
-	 * @param a
-	 *            reference to an array of integers to be sorted
-	 * @param first
-	 *            starting index of range of values to be sorted
-	 * @param mid
-	 *            midpoint index of range of values to be sorted
-	 * @param last
-	 *            last index of range of values to be sorted
-	 */
-	private void merge(ArrayList <Comparable> a, int first, int mid, int last){
-	ArrayList<Comparable> leftList = new ArrayList<Comparable>(a.subList(first, mid+1));
-	ArrayList<Comparable> rightList = new ArrayList<Comparable>(a.subList(mid+1, last+1));
-	
-	int leftIndex = 0;
-	int rightIndex = 0;
-	int mainIndex = first;
-	
-	while (leftIndex <  leftList.size() && rightIndex <  rightList.size()) {
-	      if (leftList.get(leftIndex).compareTo( rightList.get(rightIndex)) < 0) {
-	        a.set(mainIndex++, leftList.get(leftIndex++));
-	      } else {
-	        a.set(mainIndex++, rightList.get(rightIndex++));
-	      }
-	}
-  while (leftIndex <  leftList.size()) {
-  	a.set(mainIndex++, leftList.get(leftIndex++));
-	}
-	while (rightIndex < rightList.size()) {
-		a.set(mainIndex++, rightList.get(rightIndex++));
- }
-}
-
-
-	/**
-	 *  Recursive mergesort of an array of integers
-	 *
-	 * @param  a      reference to an array of integers to be sorted
-	 * @param  first  starting index of range of values to be sorted
-	 * @param  last   ending index of range of values to be sorted
-	 */
-	private void mergeSort(ArrayList <Comparable> a, int first, int last){
-		if ( last - first < 1) 
-			return;
-		
-		int mid = first + (last-first)/2 ;
-	
-		mergeSort(a,first,mid);
-		mergeSort(a,mid+1,last);
-		merge(a, first , mid , last);
-	}
-	
-	private int bsearch(Item idToSearch, int first, int last){ 
-    	if (first < last) {
-    		int mid = (first + last)/2;
-
-            int comparedId = idToSearch.getName().compareTo(idToSearch.get(mid).getName());
-            
-            if (comparedId < 0) {
-                return bsearch(idToSearch, first, mid);
-                 
-            } 
-            else if (comparedId > 0) {
-            	if ((mid+1) == last) {
-            		comparedId = idToSearch.getString().compareTo(myWordCount.get(mid+1).getString());
-            		if (comparedId == 0) {
-            			return mid+1;
-            		}
-                }
-                return bsearch(idToSearch, mid+1, last);
-                 
-            } else {
-                return mid;   
-            }
-        }
-    	return -1;
-    } 
 }
