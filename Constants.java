@@ -1,3 +1,7 @@
+ /**
+   * Class that contains all the constants
+   * 
+   */
 public class Constants{
   static final int smallStorageMax = 100;
   static final int[] locationA1 = {100,100};
