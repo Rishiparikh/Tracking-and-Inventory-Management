@@ -1,15 +1,28 @@
 import java.util.ArrayList;
-
+ /**
+   * Warehouse class
+   * Contains all items and handles the shipping 
+   */
 public class WareHouse extends Storage implements Shippable{
 	  private ArrayList<Storage> hubs = new ArrayList<Storage>();
     
-  
+   /**
+   * Contructor class
+   * @param ports = places where items will be shipped
+   * @param xCord = x coordinate of item that is being shipped
+   * @param yCord = y coordinate of item that is being shipped
+   * @param red = color to represent a line that needs to be shipped immedietly
+   * @param yellow = color to represent a line that needs to be shipped 
+   */
   public WareHouse(ArrayList<Storage> ports, ArrayList<Item> wareHouseItems, int xCord, int yCord, int red, int yellow){
     super(wareHouseItems, xCord, yCord, red, yellow, Constants.largeStorageMax);
     //ArrayList <Storage> mainInventory = new ArrayList<Storage>();
     hubs = ports; 
   }
-  
+   /**
+   * method to update the location of an item
+   * @return wether or not there is an update on an item
+   */
   public boolean hasUpdate(){
     for(int i = 0; i < hubs.size(); i++){
       if(hubs.get(i).hasUpdate()){
@@ -18,7 +31,10 @@ public class WareHouse extends Storage implements Shippable{
     }
     return false;
   }
-  
+   /**
+   * Method to refill the hub with items that need to be shipped
+   * @param i = the number of the item to refill the hub with
+   */
   public void refillHub(int i)
   {
 	  int flag=hubs.get(i).checkRedAlert();
@@ -38,7 +54,11 @@ public class WareHouse extends Storage implements Shippable{
 		 super.shipItem(itemName, Constants.refillQuantity);
 	  }
   }
-  // returns : 0 for normal status, 1 : for yellow flag and 2 : for red flag
+  /**
+   * Method to check if there is an update on the shipping items
+   * @param i = item number to check for updates
+   * @return  0 for normal status, 1 : for yellow flag and 2 : for red flag
+   */
   public int hasUpdate(int i)
   {
 	    if(hubs.get(i).checkRedAlert() >= 0 )
@@ -47,7 +67,14 @@ public class WareHouse extends Storage implements Shippable{
 	    	return 1;
 	    else return 0;
   }
-
+  /**
+   * Method to ship items from the warehouse
+   * @param name = name of items to be shipped
+   * @param amount = amount of items
+   * @param xCord = x coordinate of the item to be shipped
+   * @param yCord = y coordinate of the item to be shipped
+   * @return  wether the item can be shipped
+   */	
   public boolean shipItem(String name, int amount, int xCord, int yCord)
   {
 	  int nearest = -1;
