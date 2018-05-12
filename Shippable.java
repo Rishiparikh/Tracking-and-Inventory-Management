@@ -4,7 +4,8 @@ import java.util.ArrayList;
    * Contains outilne for Warehouse class
    */
 public interface Shippable{
-  public int[] getLocation();
+  public int x();
+  public int y();
   public void addInv(Item a);
   public boolean hasUpdate();
   public int checkYellowAlert();
