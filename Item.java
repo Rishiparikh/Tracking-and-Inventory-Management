@@ -1,4 +1,9 @@
-  /**
+/**
+ * @author Shaheryar Asad
+ * Period: 3
+ */
+
+/**
    * Item class
    * Contains the items to be shipped
    */
