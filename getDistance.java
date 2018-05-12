@@ -1,1 +1,0 @@
-public double class getDistance() {
