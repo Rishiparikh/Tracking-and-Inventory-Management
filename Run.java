@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
 public class Run {
 	private static boolean isRunning;
 	/**
-	 * Main method that creates our storage centers and shipps products
+	 * Main method that creates our storage centers and ships products
 	 * @param args
 	 * @throws InterruptedException
 	 */
@@ -15,39 +15,38 @@ public class Run {
 		ArrayList<Item> a = new ArrayList<Item>();
 		a.add(new Item("food", 50));
 		a.add(new Item("water", 30));
-		a.add(new Item("stuff", 40));
+		a.add(new Item("stuff", 20));
 		ArrayList<Item> a2 = new ArrayList<Item>();
 		a2.add(new Item("food", 50));
-		a2.add(new Item("water", 30));
-		a2.add(new Item("stuff", 40));
+		a2.add(new Item("water", 35));
+		a2.add(new Item("stuff", 45));
 		ArrayList<Item> a3 = new ArrayList<Item>();
-		a3.add(new Item("food", 50));
-		a3.add(new Item("water", 40));
-		a3.add(new Item("stuff", 40));
+		a3.add(new Item("food", 52));
+		a3.add(new Item("water", 30));
+		a3.add(new Item("stuff", 17));
 		ArrayList<Item> a1 = new ArrayList<Item>();
 		a1.add(new Item("food", 1000));
 		a1.add(new Item("water", 1000));
 		a1.add(new Item("stuff", 1000));
 		ArrayList<Item> a4 = new ArrayList<Item>();
-		a4.add(new Item("food", 40));
-		a4.add(new Item("water", 30));
-		a4.add(new Item("stuff", 20));
-		Storage b = new Storage(a2, 500, 480, 25, 40, 100);
-		Storage d = new Storage(a, 800, 300, 10, 45, 100);
-		Storage e = new Storage(a4, 500, 200, 25, 35, 100);
-		Storage c = new Storage(a3, 350, 350, 40, 45, 100);
+		a4.add(new Item("food", 30));
+		a4.add(new Item("water", 35));
+		a4.add(new Item("stuff", 57));
+		Storage b = new Storage(a2, Constants.loc1[0], Constants.loc1[1], Constants.redAlert, Constants.yellowAlert, Constants.smallStorageMax);
+		Storage c = new Storage(a3, Constants.loc2[0], Constants.loc2[1], Constants.redAlert, Constants.yellowAlert, Constants.smallStorageMax);
+		Storage d = new Storage(a, Constants.loc3[0], Constants.loc3[1], Constants.redAlert, Constants.yellowAlert, Constants.smallStorageMax);
+		Storage e = new Storage(a4, Constants.loc4[0], Constants.loc4[1], Constants.redAlert, Constants.yellowAlert, Constants.smallStorageMax);
 		ArrayList<Storage> ware = new ArrayList<Storage>();
 		ware.add(b);
 		ware.add(c);
 		ware.add(d);
 		ware.add(e);
-		WareHouse test = new WareHouse(ware, a1, 150, 150, 40, 140, 500);
+		WareHouse test = new WareHouse(ware, a1, Constants.loc0[0], Constants.loc0[1], Constants.redAlertLarge, Constants.yellowAlertLarge, Constants.largeStorageMax);
 		MapGUI gui1 = new MapGUI(test);
 		gui1.create(test);
 		gui1.update(test);
 		isRunning = true;
 		while(isRunning) {
-			
 			
 		while(test.hasUpdate()) {
 			gui1.update(test);
