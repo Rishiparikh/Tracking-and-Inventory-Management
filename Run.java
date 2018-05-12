@@ -90,13 +90,20 @@ public class Run {
 	public static void periodic(WareHouse test, MapGUI gui1) {
 		System.out.println("s");
 		Scanner sc = new Scanner(System.in);
+		
 		if(sc.hasNext()) {
 			int store = sc.nextInt()-1;
+			if(store == -1) {
+				System.out.println("done");
+				isRunning = false;
+			}
+			else {
 			String name = sc.next();
 			int amt = sc.nextInt();
 			Item temp = new Item(name, amt);
 			int recieveItemNumber = test.search(test.hubs().get(store).myInv(), temp);
 			test.hubs().get(store).myInv().get(recieveItemNumber).setQuantity(test.hubs().get(store).myInv().get(recieveItemNumber).getQuantity() + amt);
+			}
 		}
 		gui1.update(test);
 	}
