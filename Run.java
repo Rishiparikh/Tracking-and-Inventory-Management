@@ -4,7 +4,7 @@ import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author Mayank Kulshreshtha and Rishi Parikh and Sahith Arikati
+ * @author Rahul Kolli and Rishi Parikh and Sahith Arikati
  * Class to run our Shipping program
  */
 public class Run {
