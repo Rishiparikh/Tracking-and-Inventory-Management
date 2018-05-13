@@ -64,7 +64,7 @@ public class Run {
 
 	/**
 	 * Periodic method
-	 * 
+	 * Checks for input from user to determine whether an item has been used
 	 * @param test
 	 * @param gui1
 	 */
@@ -87,7 +87,10 @@ public class Run {
 		}
 		gui1.update(test);
 	}
-
+	/**
+	* Takes information from the file and creates a warehouse 
+	* @param fileName
+	*/
 	public static WareHouse input(String fileName) {
 		ArrayList<Storage> temp = new ArrayList<Storage>();
 		try {
