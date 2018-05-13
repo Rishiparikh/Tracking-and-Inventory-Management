@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 /*
+ * @author Mayank Kulshreshtha and Rishi Parikh
  * Storage Class
  * Class to store items and keep track of quantity of items
  */
