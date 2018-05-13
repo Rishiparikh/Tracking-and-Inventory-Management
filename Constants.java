@@ -1,4 +1,5 @@
  /**
+  * @author rishi
    * Class that contains all the constants
    * These Values will never change
    */
