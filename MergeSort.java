@@ -1,11 +1,15 @@
 import java.util.ArrayList;
-import java.util.Scanner;
+/** 
+ * 
+ * @author Sahith Arikati
+ *
+ */
 public class MergeSort {
  
-    private ArrayList<String> strList;
+    private ArrayList<Item> strList;
  
     // Constructor
-    public MergeSort(ArrayList<String> input) {
+    public MergeSort(ArrayList<Item> input) {
         strList = input;
     }
      
@@ -13,9 +17,9 @@ public class MergeSort {
         strList = mergeSort(strList);
     }
  
-    public ArrayList<String> mergeSort(ArrayList<String> whole) {
-        ArrayList<String> left = new ArrayList<String>();
-        ArrayList<String> right = new ArrayList<String>();
+    public ArrayList<Item> mergeSort(ArrayList<Item> whole) {
+        ArrayList<Item> left = new ArrayList<Item>();
+        ArrayList<Item> right = new ArrayList<Item>();
         int center;
  
         if (whole.size() == 1) {    
@@ -42,7 +46,7 @@ public class MergeSort {
         return whole;
     }
  
-    private void merge(ArrayList<String> left, ArrayList<String> right, ArrayList<String> whole) {
+    private void merge(ArrayList<Item> left, ArrayList<Item> right, ArrayList<Item> whole) {
         int leftIndex = 0;
         int rightIndex = 0;
         int wholeIndex = 0;
@@ -61,7 +65,7 @@ public class MergeSort {
             wholeIndex++;
         }
  
-        ArrayList<String> rest;
+        ArrayList<Item> rest;
         int restIndex;
         if (leftIndex >= left.size()) {
             // The left ArrayList has been use up...
@@ -80,27 +84,5 @@ public class MergeSort {
         }
     }
  
-    public void show() {
-        System.out.println("Sorted:");
-        for (int i=0; i< strList.size();i++) {
-            System.out.println(strList.get(i));
-        }
-    }
  
-    public static void main(String[] args) {
-        ArrayList<String> input = new ArrayList<String>();
-        Scanner sc = new Scanner(System.in);
- 
-        System.out.println("Enter your text, type done for exit:");
-        String strin = sc.nextLine();
- 
-        while(!strin.equals("done")) {
-            input.add(strin);
-            strin = sc.nextLine();
-        }
-        System.out.println("************************");
-        MergeSort test = new MergeSort(input);
-        test.sort();
-        test.show();
-    }
 }
