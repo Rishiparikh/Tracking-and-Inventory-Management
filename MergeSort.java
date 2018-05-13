@@ -8,15 +8,23 @@ public class MergeSort {
  
     private ArrayList<Item> strList;
  
-    // Constructor
+    /**
+    * Constructor for MergeSort
+    * @param input = array list of items
+    */
     public MergeSort(ArrayList<Item> input) {
         strList = input;
     }
-     
+    /**
+    * Calls the merge sort method with the array list
+    */
     public void sort() {
         strList = mergeSort(strList);
     }
- 
+    /**
+     * Merge Sort method that sorts the given array list
+     * @param whole = array list to be sorted
+     */
     public ArrayList<Item> mergeSort(ArrayList<Item> whole) {
         ArrayList<Item> left = new ArrayList<Item>();
         ArrayList<Item> right = new ArrayList<Item>();
@@ -45,15 +53,21 @@ public class MergeSort {
         }
         return whole;
     }
- 
+    /**
+    * MErge mthod
+    * As long as neither the left nor the right ArrayList has
+    * been used up, keep taking the smaller of left.get(leftIndex)
+    * or right.get(rightIndex) and adding it at both.get(bothIndex)
+    * @param left = left array list
+    * @param right = right array list
+    * @param whole = new merged array lists
+    */
     private void merge(ArrayList<Item> left, ArrayList<Item> right, ArrayList<Item> whole) {
         int leftIndex = 0;
         int rightIndex = 0;
         int wholeIndex = 0;
  
-        // As long as neither the left nor the right ArrayList has
-        // been used up, keep taking the smaller of left.get(leftIndex)
-        // or right.get(rightIndex) and adding it at both.get(bothIndex).
+        
         while (leftIndex < left.size() && rightIndex < right.size()) {
             if ( (left.get(leftIndex).compareTo(right.get(rightIndex))) < 0) {
                 whole.set(wholeIndex, left.get(leftIndex));
