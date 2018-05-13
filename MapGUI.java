@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 /**
+ * @author Rishi Parikh
  * MapGUI class which extends JFrame
  * contains the layout for our warehouses and storage centers
  *
@@ -78,7 +79,6 @@ public class MapGUI extends JFrame {
 		label = new JLabel("Map");
 
 		panel.add(label);
-
 		display = new JLabel[a.hubs().size() + 1];
 		buttons = new JButton[a.hubs().size()];
 		details = new JLabel[a.hubs().size() + 1];
