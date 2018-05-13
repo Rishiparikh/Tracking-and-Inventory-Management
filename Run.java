@@ -32,6 +32,9 @@ public class Run {
 		a4.add(new Item("food", 30));
 		a4.add(new Item("water", 35));
 		a4.add(new Item("stuff", 57));
+		for(int i = 0; i <5; i++) {
+			ai.MergeSort();
+		}
 		Storage b = new Storage(a2, Constants.loc1[0], Constants.loc1[1], Constants.redAlert, Constants.yellowAlert, Constants.smallStorageMax);
 		Storage c = new Storage(a3, Constants.loc2[0], Constants.loc2[1], Constants.redAlert, Constants.yellowAlert, Constants.smallStorageMax);
 		Storage d = new Storage(a, Constants.loc3[0], Constants.loc3[1], Constants.redAlert, Constants.yellowAlert, Constants.smallStorageMax);
